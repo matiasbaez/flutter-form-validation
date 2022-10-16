@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:products/screens/screens.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,11 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Products',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.grey[300]
       ),
-      home: Container(),
+      initialRoute: LoginScreen.routerName,
+      routes: {
+        LoginScreen.routerName: (_) => const LoginScreen(),
+        HomeScreen.routerName : (_) => const HomeScreen(),
+      },
     );
   }
 }
