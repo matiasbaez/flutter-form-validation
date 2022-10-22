@@ -7,11 +7,11 @@ import 'package:products/screens/screens.dart';
 import 'package:products/widgets/widgets.dart';
 import 'package:products/ui/ui.dart';
 
-class LoginScreen extends StatelessWidget {
+class RegisterScreen extends StatelessWidget {
 
-  static String routerName = 'Login';
+  static String routerName = 'Register';
 
-  const LoginScreen({ Key? key }) : super(key: key);
+  const RegisterScreen({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context){
@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const SizedBox( height: 10 ),
 
-                    Text('Login', style: Theme.of(context).textTheme.headline4),
+                    Text('Crear cuenta', style: Theme.of(context).textTheme.headline4),
 
                     const SizedBox( height: 30 ),
 
@@ -47,8 +47,8 @@ class LoginScreen extends StatelessWidget {
                   overlayColor: MaterialStatePropertyAll( Colors.indigo.withOpacity(0.1) ),
                   shape: const MaterialStatePropertyAll( StadiumBorder() ),
                 ),
-                onPressed: () => Navigator.pushReplacementNamed(context, RegisterScreen.routerName),
-                child: const Text('Create new account', style: TextStyle( fontSize: 18, color: Colors.black87 )),
+                onPressed: () => Navigator.pushReplacementNamed(context, LoginScreen.routerName),
+                child: const Text('¿Do you already have an account?', style: TextStyle( fontSize: 18, color: Colors.black87 )),
               ),
 
               const SizedBox( height: 50 ),

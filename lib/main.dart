@@ -42,11 +42,12 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
-      initialRoute: HomeScreen.routerName,
+      initialRoute: LoginScreen.routerName,
       routes: {
         LoginScreen.routerName: (_) => const LoginScreen(),
         HomeScreen.routerName : (_) => const HomeScreen(),
         ProductScreen.routerName: (_) => const ProductScreen(),
+        RegisterScreen.routerName : (_) => const RegisterScreen(),
       },
     );
   }
