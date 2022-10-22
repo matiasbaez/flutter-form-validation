@@ -9,21 +9,12 @@ class ProductFormProvider extends ChangeNotifier {
 
   Product product;
 
-  bool _isLoading = false;
-
-  bool get isLoading => _isLoading;
-
   ProductFormProvider(
     this.product
   );
 
   updateAvailability( bool value ) {
     product.available = value;
-    notifyListeners();
-  }
-
-  set isLoading(bool value) {
-    _isLoading = value;
     notifyListeners();
   }
 
