@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
+      scaffoldMessengerKey: NotificationService.messengerKey,
       initialRoute: CheckAuthScreen.routerName,
       routes: {
         CheckAuthScreen.routerName: (_) => const CheckAuthScreen(),

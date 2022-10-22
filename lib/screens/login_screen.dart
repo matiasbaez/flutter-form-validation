@@ -70,7 +70,7 @@ class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final loginFormProvider = Provider.of<LoginFormProvider>(context, listen: false);
+    final loginFormProvider = Provider.of<LoginFormProvider>(context);
     final authService = Provider.of<AuthService>(context, listen: false);
 
     return Container(
@@ -138,7 +138,7 @@ class _LoginForm extends StatelessWidget {
                 if (errorMsg == null) {
                   Navigator.pushReplacementNamed(context, HomeScreen.routerName);
                 } else {
-                  
+                  NotificationService.showSnackBar(errorMsg);
                 }
 
                 loginFormProvider.isLoading = false;
