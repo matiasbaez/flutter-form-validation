@@ -10,6 +10,7 @@ class ProductService extends ChangeNotifier {
 
   final String _baseUrl = 'perfect-crawler-150816-default-rtdb.firebaseio.com';
   final List<Product> _products = [];
+  late Product selectedProduct;
 
   bool isLoading = false;
 
@@ -42,6 +43,32 @@ class ProductService extends ChangeNotifier {
 
   get products {
     return _products;
+  }
+
+  Future saveOrCreateProduct(Product product) async {
+    isLoading = true;
+    notifyListeners();
+
+    if ( product.id == null ) {
+
+    } else {
+      await updateProduct(product);
+    }
+
+
+    isLoading = false;
+    notifyListeners();
+  }
+
+  Future<String> updateProduct( Product product ) async {
+    final url = Uri.https(_baseUrl, 'products/${ product.id }.json');
+    final response = await http.put( url, body: product.toJson() );
+    /// final decodedData = response.body;
+
+    final index = _products.indexWhere((element) => element.id == product.id);
+    if ( index != -1 ) _products[index] = product;
+
+    return product.id!;
   }
 
 }
