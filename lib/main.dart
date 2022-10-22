@@ -16,9 +16,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Products',
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.grey[300]
+        scaffoldBackgroundColor: Colors.grey[300],
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          color: Colors.indigo
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.indigo,
+          elevation: 0
+        )
       ),
-      initialRoute: LoginScreen.routerName,
+      initialRoute: HomeScreen.routerName,
       routes: {
         LoginScreen.routerName: (_) => const LoginScreen(),
         HomeScreen.routerName : (_) => const HomeScreen(),

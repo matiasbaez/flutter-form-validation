@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:products/widgets/widgets.dart';
+
 class HomeScreen extends StatelessWidget {
 
   static String routerName = 'Home';
@@ -11,9 +13,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Productos'),
       ),
-      body: Container(),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: ( _, int index ) => const ProductCard(),  
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {},
+        child: const Icon( Icons.add )
+      ),
     );
   }
 
