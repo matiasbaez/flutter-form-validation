@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:products/providers/providers.dart';
+import 'package:products/services/services.dart';
 import 'package:products/screens/screens.dart';
 import 'package:products/widgets/widgets.dart';
 import 'package:products/ui/ui.dart';
@@ -70,6 +71,7 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final loginFormProvider = Provider.of<LoginFormProvider>(context, listen: false);
+    final authService = Provider.of<AuthService>(context, listen: false);
 
     return Container(
       child: Form(
@@ -132,18 +134,22 @@ class _LoginForm extends StatelessWidget {
 
                 loginFormProvider.isLoading = true;
 
-                await Future.delayed(const Duration(seconds: 2));
+                final String? errorMsg = await authService.signUp(loginFormProvider.email, loginFormProvider.password);
+                if (errorMsg == null) {
+                  Navigator.pushReplacementNamed(context, HomeScreen.routerName);
+                } else {
+
+                }
 
                 loginFormProvider.isLoading = false;
 
-                Navigator.pushReplacementNamed(context, HomeScreen.routerName);
               },
               child: Container(
                 padding: const EdgeInsets.symmetric( horizontal: 80, vertical: 10 ),
                 child: Text(
                   loginFormProvider.isLoading
                     ? 'Iniciando...'
-                    : 'Login',
+                    : 'Registrarse',
                   style: const TextStyle( color: Colors.white )
                 ),
               )

@@ -15,7 +15,8 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ProductService())
+        ChangeNotifierProvider(create: (_) => AuthService()),
+        ChangeNotifierProvider(create: (_) => ProductService()),
       ],
       child: const MyApp(),
     );
@@ -42,12 +43,15 @@ class MyApp extends StatelessWidget {
           elevation: 0
         )
       ),
-      initialRoute: LoginScreen.routerName,
+      initialRoute: CheckAuthScreen.routerName,
       routes: {
-        LoginScreen.routerName: (_) => const LoginScreen(),
-        HomeScreen.routerName : (_) => const HomeScreen(),
-        ProductScreen.routerName: (_) => const ProductScreen(),
+        CheckAuthScreen.routerName: (_) => const CheckAuthScreen(),
+
+        LoginScreen.routerName    : (_) => const LoginScreen(),
         RegisterScreen.routerName : (_) => const RegisterScreen(),
+
+        HomeScreen.routerName     : (_) => const HomeScreen(),
+        ProductScreen.routerName  : (_) => const ProductScreen(),
       },
     );
   }
